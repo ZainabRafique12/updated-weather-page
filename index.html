@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="error-msg" style="display: none; color: red; margin-bottom: 10px; font-weight: bold;">
+            City not found! Please try again.
+        </div>
+
+        <div class="weather-container">
+            <div class="temp">
+                <p>---temperature---</p>
+            </div>
+            <div class="time-locat">
+                <p>Loading...</p>
+                <span>10:49 Wednesday 2026-02-04</span>
+            </div>
+
+            <div class="condition">
+                <img class="weather-icon" src="" alt="weather icon" />
+                <p></p>
+            </div>
+
+            <!-- ✅ NEW: Air Quality Index Section -->
+            <div class="aqi-container" style="margin-top: 15px; width: 100%; display: none;">
+                <div class="aqi-card">
+                    <div class="aqi-header">
+                        <i class="fa-solid fa-wind"></i>
+                        <span>Air Quality</span>
+                    </div>
+                    <div class="aqi-value" id="aqi-value">--</div>
+                    <div class="aqi-label" id="aqi-label">Loading...</div>
+                </div>
+            </div>
+
+            <!-- ✅ NEW: Additional Weather Details -->
+            <div class="weather-details" style="margin-top: 20px; width: 100%; display: none;">
+                <div class="detail-card">
+                    <i class="fa-solid fa-droplet"></i>
+                    <div>
+                        <p class="detail-label">Humidity</p>
+                        <p class="detail-value" id="humidity">--%</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <i class="fa-solid fa-wind"></i>
+                    <div>
+                        <p class="detail-label">Wind</p>
+                        <p class="detail-value" id="wind">-- km/h</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <i class="fa-solid fa-temperature-half"></i>
+                    <div>
+                        <p class="detail-label">Feels Like</p>
+                        <p class="detail-value" id="feels-like">--°</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <i class="fa-solid fa-sun"></i>
+                    <div>
+                        <p class="detail-label">UV Index</p>
+                        <p class="detail-value" id="uv-index">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-container" style="display: flex; gap: 10px; margin-top: 20px;"></div>
+        </div>
+
+        <nav>
+            <div class="controls" style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center;">
+                <button id="get-location" title="Get My Location"
+                    style="background: none; border: 1px solid white; color: white; border-radius: 50%; width: 40px;
+                     height: 40px; cursor: pointer;"><i class="fa-solid fa-location-crosshairs"></i></button>
+
+                <div class="unit-toggle" style="color: white; font-weight: bold; cursor: pointer;">
+                    <span id="unit-c" style="color: yellow;">°C</span> | <span id="unit-f">°F</span>
+                </div>
+            </div>
+            <form>
+                <input type="text" placeholder="Enter your Location" class="search-area" />
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

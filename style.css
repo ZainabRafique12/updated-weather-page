@@ -1,0 +1,332 @@
+ * {
+     margin: 0;
+     padding: 0;
+ }
+
+ body {
+     background: linear-gradient(#04f9f1, #7dffd4);
+     transition: background 0.8s ease-in-out;
+     min-height: 100vh;
+ }
+
+ .container {
+     width: 100%;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+ }
+
+ .weather-container {
+     color: rgb(21, 17, 17);
+     background: rgba(255, 255, 255, 0.2);
+     width: 25%;
+     display: flex;
+     flex-direction: column;
+     height: auto;
+     max-height: 85vh;
+     justify-content: center;
+     align-items: center;
+     backdrop-filter: blur(10px);
+     padding: 2rem;
+     border-radius: 20px;
+     border: 1px solid rgba(255, 255, 255, 0.3);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+ }
+
+ .temp {
+     font-size: 3.5rem;
+ }
+.temp p{
+    margin: 0;
+    line-height: 1;
+}
+ .time-location {
+     font-size: 2rem;
+ }
+ .time-locat p {
+     font-size: 1.3rem; 
+     margin: 5px 0;
+ }
+ .time-locat span {
+     font-size: 0.85rem; 
+     opacity: 0.8;
+ }
+ .condition {
+     margin: 0.3rem 0;
+ }
+  .condition p {
+     font-size: 1.1rem;
+ }
+
+ nav {
+     height: 50px;
+     margin-left: 5%;
+     display: flex;
+     flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+     border: 1px solid rgba(255, 255, 255, 0.3);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+ }
+
+ .search-area {
+     padding: 0.56rem;
+     outline: none;
+     border: none;
+     font: 1.05rem;
+     background-color: transparent;
+     color: rgb(25, 17, 57);
+     border: 2px solid rgb(253, 247, 247);
+     border-radius: 5px;
+ }
+
+ .search-area::placeholder {
+     color: rgb(7, 15, 14);
+ }
+
+ .search-area:hover {
+     border: 2px solid #495554;
+     background-color: #ddfffb;
+ }
+
+ nav form button {
+     background-color: transparent;
+     border: 2px solid rgb(253, 247, 247);
+     color: rgb(44, 70, 67);
+     margin-top: 1rem;
+     font-size: 1.1rem;
+     outline: none;
+     cursor: pointer;
+     border-radius: 5px;
+     padding: 0.5rem;
+     width: 6rem;
+     margin-left: 15px;
+ }
+
+ nav form button:hover {
+     background-color: #ddfffb;
+     border: 2px solid #08bbd6;
+ }
+
+ /*some styling for js code 
+this styling will change the bakground according to weather*/
+ /* Ye classes hum JS ke zariye body par apply karenge */
+ .sunny {
+     background: linear-gradient(to right, #f7b733, #ff653a) !important;
+ }
+
+ .cloudy {
+     background: linear-gradient(to right, #8abfe2, #3a546e) !important;
+ }
+
+ .rainy {
+     background: linear-gradient(to right, #4b6cb7, #21304f) !important;
+ }
+
+ .cold {
+     background: linear-gradient(to right, #eef2f3, #9ad1ff) !important;
+ }
+
+ .default-bg {
+     background: #4a90e2;
+ }
+
+ /*weathe Icons*/
+ .weather-icon {
+     width: 80px;
+     height: 80px;
+     margin-top: 10px;
+ }
+
+ img[src=""] {
+     display: none;
+ }
+
+ /* 1. Fade-in Animation */
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(10px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ .fade-in {
+     animation: fadeIn 0.8s ease-in-out;
+ }
+
+ /* 2. Forecast Cards Styling */
+ .forecast-container {
+     display: flex;
+     justify-content: space-around;
+     width: 100%;
+     margin-top: 25px;
+     border-top: 1px solid rgba(255, 255, 255, 0.2);
+     padding-top: 15px;
+ }
+
+ .forecast-card {
+     text-align: center;
+     background: rgba(255, 255, 255, 0.1);
+     padding: 10px;
+     border-radius: 10px;
+     min-width: 70px;
+     transition: transform 0.3s ease;
+ }
+
+ .forecast-card:hover {
+     transform: scale(1.05);
+     background: rgba(255, 255, 255, 0.25);
+ }
+
+ .forecast-card img {
+     width: 40px;
+     height: 40px;
+ }
+
+ .forecast-card p {
+     font-size: 0.9rem;
+     font-weight: bold;
+ }
+
+ .forecast-date {
+     font-size: 0.7rem !important;
+     opacity: 0.8;
+ }
+
+ /* 3. Error Message Styling */
+ #error-msg {
+     background: rgba(255, 0, 0, 0.15);
+     color: #ff4d4d !important;
+     padding: 10px 20px;
+     border-radius: 10px;
+     margin-bottom: 15px;
+     backdrop-filter: blur(5px);
+     border: 1px solid rgba(255, 77, 77, 0.3);
+     text-align: center;
+ }
+
+ /* ✅ NEW: Air Quality Index Styling */
+ .aqi-container {
+     width: 100%;
+     margin-top: 15px;
+ }
+
+ .aqi-card {
+     background: rgba(255, 255, 255, 0.15);
+     padding: 15px;
+     border-radius: 12px;
+     text-align: center;
+     backdrop-filter: blur(5px);
+     border: 1px solid rgba(255, 255, 255, 0.3);
+     transition: all 0.3s ease;
+ }
+
+ .aqi-header {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+     font-size: 0.9rem;
+     opacity: 0.9;
+     margin-bottom: 10px;
+ }
+
+ .aqi-header i {
+     font-size: 1.1rem;
+ }
+
+ .aqi-value {
+     font-size: 2.5rem;
+     font-weight: bold;
+     margin: 5px 0;
+ }
+
+ .aqi-label {
+     font-size: 0.95rem;
+     font-weight: 600;
+     padding: 5px 15px;
+     border-radius: 20px;
+     display: inline-block;
+     margin-top: 5px;
+ }
+
+ /* AQI Color Classes */
+ .aqi-good {
+     background: rgba(159, 199, 159, 0.3);
+     color: #234d23;
+ }
+
+ .aqi-moderate {
+     background: rgba(249, 249, 52, 0.3);
+     color: #ffff00;
+ }
+
+ .aqi-unhealthy-sensitive {
+     background: rgba(250, 168, 86, 0.3);
+     color: #ff7e00;
+ }
+
+ .aqi-unhealthy {
+     background: rgba(244, 78, 78, 0.3);
+     color: #ff0000;
+ }
+
+ .aqi-very-unhealthy {
+     background: rgba(210, 112, 219, 0.3);
+     color: #8f3f97;
+ }
+
+ .aqi-hazardous {
+     background: rgba(238, 89, 131, 0.3);
+     color: #7e0023;
+ }
+
+
+ .weather-details {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 12px;
+     width: 100%;
+     margin-top: 20px;
+ }
+
+ .detail-card {
+     background: rgba(255, 255, 255, 0.15);
+     padding: 12px;
+     border-radius: 10px;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     backdrop-filter: blur(5px);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     transition: all 0.3s ease;
+ }
+
+ .detail-card:hover {
+     background: rgba(255, 255, 255, 0.25);
+     transform: translateY(-2px);
+ }
+
+ .detail-card i {
+     font-size: 1.5rem;
+     opacity: 0.8;
+ }
+
+ .detail-label {
+     font-size: 0.75rem;
+     opacity: 0.8;
+     margin-bottom: 3px;
+ }
+
+ .detail-value {
+     font-size: 1.1rem;
+     font-weight: bold;
+ }
