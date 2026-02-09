@@ -9,7 +9,7 @@ const weatherContainer = document.querySelector(".weather-container");
 const forecastContainer = document.querySelector(".forecast-container");
 const errorDisplay = document.getElementById("error-msg");
 
-// ✅ NEW: AQI and Weather Details Elements
+// AQI and Weather Details Elements
 const aqiContainer = document.querySelector(".aqi-container");
 const aqiValue = document.getElementById("aqi-value");
 const aqiLabel = document.getElementById("aqi-label");
@@ -23,13 +23,13 @@ form.addEventListener('submit', searchForLocation);
 
 let target = "Abbottabad, Pakistan";
 
-// ✅ NEW: Parallel API Calls Function
+// Parallel API Calls Function
 const fetchResult = async (target) => {
     try {
         // WeatherAPI.com API call with AQI enabled
         let weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=ca6efb4e5dd34da2b3163407260402&q=${target}&days=3&aqi=yes`;
         
-        // ✅ PARALLEL FETCH - Dono API calls ek saath hongi
+        //  PARALLEL FETCH - 
         const weatherRes = await fetch(weatherUrl);
         
         if (!weatherRes.ok) throw new Error("City not found");
@@ -47,13 +47,13 @@ const fetchResult = async (target) => {
         let iconField = weatherData.current.condition.icon;
         let forecastDays = weatherData.forecast.forecastday;
 
-        // ✅ NEW: Additional Weather Details
+        // Additional Weather Details
         let humidity = weatherData.current.humidity;
         let windSpeed = weatherData.current.wind_kph;
         let feelsLike = weatherData.current.feelslike_c;
         let uvIndex = weatherData.current.uv;
 
-        // ✅ NEW: AQI Data (WeatherAPI includes this)
+        // AQI Data (WeatherAPI includes this)
         let aqiData = weatherData.current.air_quality;
 
         lastFetchedData = weatherData;
@@ -70,7 +70,7 @@ const fetchResult = async (target) => {
     }
 }
 
-// ✅ UPDATED: updateDetails function with AQI and weather details
+//  updateDetails function with AQI and weather details
 function updateDetails(temp, locationName, time, condition, iconField, forecastDays, humidity, windSpeed, feelsLike, uvIndex, aqiData) {
     // Fade-in Animation
     weatherContainer.classList.remove("fade-in");
@@ -87,7 +87,7 @@ function updateDetails(temp, locationName, time, condition, iconField, forecastD
     dateandTimeField.innerText = `${splitDate} ${currentDay} ${splitTime}`;
     conditionField.innerText = condition;
 
-    // ✅ NEW: Update Weather Details
+    //  Update Weather Details
     humidityEl.innerText = `${humidity}%`;
     windEl.innerText = `${windSpeed} km/h`;
     feelsLikeEl.innerText = `${feelsLike}°C`;
@@ -96,7 +96,7 @@ function updateDetails(temp, locationName, time, condition, iconField, forecastD
     // Show weather details
     weatherDetails.style.display = "grid";
 
-    // ✅ NEW: Update AQI
+    //  Update AQI
     if (aqiData && aqiData.pm2_5) {
         updateAQI(aqiData);
         aqiContainer.style.display = "block";
@@ -122,7 +122,7 @@ function updateDetails(temp, locationName, time, condition, iconField, forecastD
     changeBackground(condition);
 }
 
-// ✅ NEW: AQI Update Function
+//  AQI Update Function
 function updateAQI(aqiData) {
     // US EPA standard use kar rahe hain (PM2.5 based)
     const pm25 = aqiData.pm2_5;
@@ -221,7 +221,7 @@ locationBtn.addEventListener("click", () => {
     }
 });
 
-// ✅ UPDATED: Unit Converter with new weather details
+//  Unit Converter with new weather details
 unitF.addEventListener("click", () => {
     currentUnit = "F";
     unitF.style.color = "yellow";

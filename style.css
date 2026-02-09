@@ -213,7 +213,7 @@ this styling will change the bakground according to weather*/
      text-align: center;
  }
 
- /* ✅ NEW: Air Quality Index Styling */
+ /*  Air Quality Index Styling */
  .aqi-container {
      width: 100%;
      margin-top: 15px;
